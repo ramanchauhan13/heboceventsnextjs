@@ -1,20 +1,9 @@
-'use client'
-import {React, useEffect} from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Landing from '@/components/Home'
-import useMousePosition from '@/hooks/useMousePosition';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import useMousePosition from '../../hooks/useMousePosition';
 
-const Home = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      // once: true,
-    });
-  }, []);
-
+const Layout = ({ children }) => {
   const mousePosition = useMousePosition();
 
   return (
@@ -35,11 +24,11 @@ const Home = () => {
 
       <Navbar />
       <main className="relative z-10">
-        <Landing />
+        {children}
       </main>
       <Footer />
     </>
   );
 };
 
-export default Home;
+export default Layout;
